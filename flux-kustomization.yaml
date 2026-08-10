@@ -4,7 +4,7 @@ metadata:
   name: seshat-multus-platform
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 5m
   path: ./seshat-multus-platform
   prune: true
   sourceRef:
