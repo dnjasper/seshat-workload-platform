@@ -39,6 +39,8 @@ jobs:
           ECR_REPOSITORY: seshat-api
           IMAGE_TAG: ${{ github.sha }} # Tags image with unique Git commit hash for tracking for potential debuggin issues I like this
         run: |
+          cd apps
+          
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
