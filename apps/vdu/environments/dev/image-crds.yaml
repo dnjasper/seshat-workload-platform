@@ -1,0 +1,49 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: seshat-api
+  namespace: flux-system
+spec:
+  interval: 2m
+  image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/seshat-api
+  provider: aws   
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: seshat-api-latest
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: seshat-api
+  policy:
+    alphabetical:
+      order: asc  # Always pick the latest version
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: seshat-api-update
+  namespace: flux-system
+spec:
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: workload-repo-source
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: dnjasper@hotmail.com
+        name: dnjasper
+      messageTemplate: 'gitops: automated application image tag deployment update'
+    push:
+      branch: main
+  update:
+    strategy: Setters
+    path: .
+    

@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - pod.yaml
   - deployment.yaml
+  - image-crds.yaml
