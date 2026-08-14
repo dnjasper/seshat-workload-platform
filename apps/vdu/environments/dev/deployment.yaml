@@ -6,7 +6,7 @@ metadata:
   labels:
     app: seshat-vdu
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: seshat-vdu
@@ -26,5 +26,5 @@ spec:
               cpu: "100m"
               memory: "128Mi"
             limits:
-              cpu: "400m"
-              memory: "512Mi"
+              cpu: "200m"
+              memory: "256Mi"
