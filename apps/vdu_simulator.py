@@ -1,4 +1,4 @@
-import time  # I love you
+import time  
 import sys   # I love Juana for REAL
 
 MULTUS_INTERFACE_IP = "192.168.100.10"
