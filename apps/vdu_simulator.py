@@ -1,5 +1,5 @@
 import time  
-import sys   # I love Juana for REAL
+import sys   
 
 MULTUS_INTERFACE_IP = "192.168.100.10"
 TARGET_SUBNET = "192.168.100.0/24"
