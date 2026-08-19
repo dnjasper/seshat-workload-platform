@@ -31,7 +31,7 @@ jobs:
       #     aws-region: ${{ secrets.AWS_REGION }}
 
        
-      - name: Dump OIDC token claims
+      - name: Dump OIDC token claims  # Let us see
         shell: bash
         run: |
           echo "Requesting OIDC token..."
