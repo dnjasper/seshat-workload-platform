@@ -30,6 +30,15 @@ jobs:
       #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #     aws-region: ${{ secrets.AWS_REGION }}
 
+
+      - name: Debug GitHub identity
+        run: |
+          echo "Role: ${{ vars.AWS_ROLE_TO_ASSUME }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Workflow: ${{ github.workflow }}"
+
       - name: Access AWS
         uses: aws-actions/configure-aws-credentials@v4
         with:
