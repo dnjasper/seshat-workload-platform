@@ -4,12 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-  # repository_dispatch:
-  #   types:
-  #    # - "flux-triggered" # Custom event type that Flux will trigger when it detects changes to the Git repository, allowing for a fully automated pipeline without manual intervention 
-  #     - "Kustomization/seshat-app-delivery.flux-system" 
-    
+  workflow_dispatch:   
 jobs:
   build-and-ship:
     name: "Build & Ship Container"
@@ -23,14 +18,6 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      # - name: Authenticate with AWS
-      #   uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: ${{ secrets.AWS_REGION }}
-
-       
       - name: Dump OIDC token claims  # Let us see
         shell: bash
         run: |
