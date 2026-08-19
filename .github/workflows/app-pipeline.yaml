@@ -31,6 +31,9 @@ jobs:
       #     aws-region: ${{ secrets.AWS_REGION }}
 
 
+       
+
+
       - name: Debug GitHub identity
         run: |
           echo "Role: ${{ vars.AWS_ROLE_TO_ASSUME }}"
