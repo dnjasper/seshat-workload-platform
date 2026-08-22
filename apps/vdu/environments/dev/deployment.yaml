@@ -20,7 +20,7 @@ spec:
       containers:
         - name: seshat-vdu
           # Note: Flux will automatically overwrite this placeholder tag with your real live AWS ECR image hash later! Total Bullshit!
-          image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/seshat_api:26f2e52afe81866cb6aad8ce0288afa696f95351 # {"$imagepolicy": "flux-system:seshat-api-latest"}  
+          image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/seshat_api:5ca1e0c256cca314ad0fc9bc40f7539ceb664450 # {"$imagepolicy": "flux-system:seshat-api-latest"}  
           imagePullPolicy: Always
           resources:
             requests:
