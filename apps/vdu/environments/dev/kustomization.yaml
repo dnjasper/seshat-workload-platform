@@ -4,3 +4,4 @@ resources:
   - pod.yaml
   - deployment.yaml
   - image-crds.yaml
+  - pod-monitor.yaml
