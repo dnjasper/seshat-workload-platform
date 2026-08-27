@@ -5,3 +5,5 @@ resources:
   - deployment.yaml
   - image-crds.yaml
   - pod-monitor.yaml
+  - prometheus-rule.yaml
+  - hpa.yaml
