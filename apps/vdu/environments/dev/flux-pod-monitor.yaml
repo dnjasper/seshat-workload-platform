@@ -11,7 +11,7 @@ spec:
     matchNames:
       - flux-system
   selector:
-    matchLabels:
+    matchExpressions:
     - key: app
       operator: In
       values:
