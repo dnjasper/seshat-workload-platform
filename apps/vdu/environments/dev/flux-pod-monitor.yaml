@@ -25,5 +25,4 @@ spec:
     - targetPort: 8080
       path: /metrics
       interval: 30s
-      scrapeTimeout: 25s:wq
-      
+      scrapeTimeout: 25s
