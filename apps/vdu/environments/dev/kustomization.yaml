@@ -8,3 +8,4 @@ resources:
   - prometheus-rule.yaml
   - hpa.yaml
   - flux-pod-monitor.yaml
+  - service.yaml
