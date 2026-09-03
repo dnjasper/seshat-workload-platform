@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kustomize-controller
+  namespace: flux-system
+  labels:
+    app: kustomize-controller
+spec:
+  ports:
+    - name: http-prom
+      port: 80
+      targetPort: 8080
+  selector:
+    app: kustomize-controller
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helm-controller
+  namespace: flux-system
+  labels:
+    app: helm-controller
+spec:
+  ports:
+    - name: http-prom
+      port: 80
+      targetPort: 8080
+  selector:
+    app: helm-controller
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-automation-controller
+  namespace: flux-system
+  labels:
+    app: image-automation-controller
+spec:
+  ports:
+    - name: http-prom
+      port: 80
+      targetPort: 8080
+  selector:
+    app: image-automation-controller
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-reflector-controller
+  namespace: flux-system
+  labels:
+    app: image-reflector-controller
+spec:
+  ports:
+    - name: http-prom
+      port: 80
+      targetPort: 8080
+  selector:
+    app: image-reflector-controller
