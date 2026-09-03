@@ -21,6 +21,7 @@ spec:
       - kustomize-controller
       - image-automation-controller
       - image-reflector-controller
+      - notification-controller
   podMetricsEndpoints:
     - targetPort: 8080
       path: /metrics
