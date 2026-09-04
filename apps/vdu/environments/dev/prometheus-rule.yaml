@@ -19,6 +19,6 @@ spec:
     - alert: ContainerNetworkErrors
       expr: container_network_transmit_errors_total{pod=~"seshat-vdu.*"} > 0
       for: 1m
-     labels:
-       severity: warning
+      labels:
+        severity: warning
       
