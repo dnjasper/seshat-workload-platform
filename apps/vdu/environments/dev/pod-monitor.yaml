@@ -7,8 +7,13 @@ metadata:
     release: monitoring-monitoring  # I hope this works
 spec:
   selector:
-    matchLabels:
-      app: multus
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - multus
+      - seshat-vdu
   podMetricsEndpoints:
     - port: metrics
+      interval: 15s
       path: /metrics
