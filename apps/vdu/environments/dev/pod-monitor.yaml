@@ -2,17 +2,16 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: multus
-  namespace: multus-system
+  namespace: default
   labels:
     release: monitoring-monitoring  # I hope this works
 spec:
+  namespaceSelector:
+    matchNames:
+      - default
   selector:
-    matchExpressions:
-    - key: app
-      operator: In
-      values:
-      - multus
-      - seshat-vdu
+    matchLabels:
+      app: seshat-vdu
   podMetricsEndpoints:
     - port: metrics
       interval: 15s
