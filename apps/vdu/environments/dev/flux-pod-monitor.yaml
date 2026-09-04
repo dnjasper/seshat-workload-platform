@@ -23,7 +23,7 @@ spec:
       - image-reflector-controller
       - notification-controller
   podMetricsEndpoints:
-    - targetPort: 8080
+    - targetPort: 9090
       path: /metrics
       interval: 30s
       scrapeTimeout: 25s
