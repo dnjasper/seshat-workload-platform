@@ -1,7 +1,6 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-  tearingshitup: practice
   name: multus
   namespace: default
   labels:
