@@ -10,7 +10,7 @@ spec:
   - name: telco-data-plane
     rules:
     - alert: TelcoUserPlaneInterfaceDown
-      expr: node_network_up{device=~"ens[6-7]"} == 1
+      expr: node_network_up{device=~"ens[6-7]"} == 0
       for: 2m 
       labels:
         severity: critical
