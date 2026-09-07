@@ -17,6 +17,7 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: telco-data-plane
     spec:
+      serviceAccountName: seshat-vdu-sa
       containers:
         - name: seshat-vdu
           # Note: Flux will automatically overwrite this placeholder tag with your real live AWS ECR image hash later! Total Bullshit!
