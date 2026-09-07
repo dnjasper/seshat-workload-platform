@@ -1,5 +1,5 @@
 import time  
-import sys   # I love Juana so much
+import sys   # I love Juana 
 from prometheus_client import start_http_server, Counter
 
 # 1. Start an authentic background metrics server on port 8080
