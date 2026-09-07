@@ -18,8 +18,8 @@ spec:
   imageRepositoryRef:
     name: seshat-api
   policy:
-    alphabetical:
-      order: asc  # Ascend -> pick the latest version
+    semver:
+      range: '>=1.0.0'  # Ascend -> pick the latest version
 
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
