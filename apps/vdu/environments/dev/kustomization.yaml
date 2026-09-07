@@ -9,4 +9,4 @@ resources:
   - hpa.yaml
   - flux-pod-monitor.yaml
   - service.yaml
- # - serviceaccount.yaml
+  - serviceaccount.yaml
