@@ -63,19 +63,19 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-      - name: Build and Push vDU Image  #sleepy
+      - name: Build and Push vDU Image  
         run: |
-          docker build -t ${{ steps.login-ecr.outputs.registry }}/vdu-worker:latest ./apps/vdu
-          docker push ${{ steps.login-ecr.outputs.registry }}/vdu-worker:latest
+          docker build -t ${{ steps.login-ecr.outputs.registry }}/seshat_api:latest ./apps/vdu
+          docker push ${{ steps.login-ecr.outputs.registry }}/seshat_api:latest
 
       # SECURE OPEN5GS UPF CONTAINER PAYLOAD 
-      - name: Pull, Tag, and Push Open5GS UPF Image
-        run: |
-          # 1. Pull the official verified release onto the runner disk
-          docker pull open5gs/open5gs:2.7.2
+      # - name: Pull, Tag, and Push Open5GS UPF Image
+      #   run: |
+      #     # 1. Pull the official verified release onto the runner disk
+      #     docker pull open5gs/open5gs:2.7.2
           
-          # 2. Re-tag it to target your private UPF repository slot in Repo1
-          docker tag open5gs/open5gs:2.7.2 ${{ steps.login-ecr.outputs.registry }}/upf-worker:latest
+      #     # 2. Re-tag it to target your private UPF repository slot in Repo1
+      #     docker tag open5gs/open5gs:2.7.2 ${{ steps.login-ecr.outputs.registry }}/upf-worker:latest
 
-          # 3. Ship the binary payload into your private account ledger
-          docker push ${{ steps.login-ecr.outputs.registry }}/upf-worker:latest
+      #     # 3. Ship the binary payload into your private account ledger
+      #     docker push ${{ steps.login-ecr.outputs.registry }}/upf-worker:latest
