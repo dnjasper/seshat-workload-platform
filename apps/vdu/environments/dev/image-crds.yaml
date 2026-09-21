@@ -15,6 +15,7 @@ metadata:
   name: seshat-api-latest
   namespace: flux-system
 spec:
+  interval: 2m
   imageRepositoryRef:
     name: seshat-api
   policy:
