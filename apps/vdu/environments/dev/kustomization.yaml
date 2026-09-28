@@ -10,3 +10,4 @@ resources:
   - flux-pod-monitor.yaml
   - service.yaml
   - serviceaccount.yaml
+  - . upf

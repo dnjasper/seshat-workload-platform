@@ -1,3 +1,4 @@
+# IMAGE-REPO ----------------------------------------------------
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
@@ -8,21 +9,40 @@ spec:
   image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/seshat_api
   provider: aws   
 
+
 ---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: upf-worker
+  namespace: flux-system
+spec:
+  interval: 2m
+  image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/upf-worker
+  provider: aws
+
+# IMAGE-REPO ----------------------------------------------------
+
+---
+# IMAGE-POLICY ----------------------------------------------------
+
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
-  name: seshat-api-latest
+  name: upf-worker-latest
   namespace: flux-system
 spec:
   interval: 2m
   imageRepositoryRef:
-    name: seshat-api
+    name: upf-worker
   policy:
     alphabetical:
       order: asc
   digestReflectionPolicy: Always 
 
+# IMAGE-POLICY ----------------------------------------------------
+
+# IMAGE-UPDATE AUTOMATION ----------------------------------------------------
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
@@ -48,4 +68,32 @@ spec:
   update:
     strategy: Setters
     path: .
-    
+
+---
+
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: upf-worker-update
+  namespace: flux-system
+spec:
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: workload-repo-source
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: dnjasper@hotmail.com
+        name: dnjasper
+      messageTemplate: 'gitops: automated application image tag deployment update'
+    push:
+      branch: main
+  update:
+    strategy: Setters
+    path: .
+
+# IMAGE-UPDATE AUTOMATION ----------------------------------------------------    
