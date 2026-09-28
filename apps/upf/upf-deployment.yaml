@@ -22,9 +22,9 @@ spec:
         ]'
     spec:
       securityContext:
-        sysctls:
-          - name: net.ipv4.ip_forward
-            value: "1"
+        # sysctls:
+        #   - name: net.ipv4.ip_forward
+        #     value: "1"
       initContainers:
         - name: configure-routes
           image: alpine:3.18
