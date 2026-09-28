@@ -56,8 +56,8 @@ spec:
                 path: upf.yaml
       containers:
         - name: upf-container
-          #image: open5gs/open5gs:2.7.2
-          image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/upf_worker:latest@sha256 # {"$imagepolicy": "flux-system:seshat-api-latest"}
+          image: open5gs/open5gs:2.7.2
+          #image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/upf_worker:latest@sha256 # {"$imagepolicy": "flux-system:seshat-api-latest"}
           imagePullPolicy: Always
           securityContext:         
             allowPrivilegeEscalation: false # Hardened: Prevents exploitation escalation loops
