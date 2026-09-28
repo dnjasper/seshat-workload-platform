@@ -17,7 +17,7 @@ spec:
         app: upf-core
       annotations:
         k8s.v1.cni.cncf.io/networks: '[
-          { "name": "telco-N3-plane", "interface": "n3" },  # I hope this works
+          { "name": "telco-N3-plane", "interface": "n3" },  
           { "name": "telco-N6-plane", "interface": "n6" }
         ]'
     spec:
@@ -56,7 +56,8 @@ spec:
                 path: upf.yaml
       containers:
         - name: upf-container
-          image: open5gs/open5gs:2.7.2
+          #image: open5gs/open5gs:2.7.2
+          image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/upf_worker:latest@sha256 # {"$imagepolicy": "flux-system:seshat-api-latest"}
           imagePullPolicy: Always
           securityContext:         
             allowPrivilegeEscalation: false # Hardened: Prevents exploitation escalation loops
