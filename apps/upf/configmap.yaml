@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: telco-data-plane-config
+  namespace: default
+  labels:
+    app: upf-core
+    managed-by: flux
+data:
+  upf.yaml: |
+    logger:
+      level: info
+      file: /var/log/open5gs/upf.log
+
+    # N4 Interface
+    # UPF listens for PFCP session rules from the SMF on UDP 8805
+    upf:
+      pfcp:
+        - address: 0.0.0.0
+
+    # N3 INTERFACE
+    # gtp-u traffic - Port 2152
+      gtpu:
+        - dev: n3
+
+
+    # N6 INTERFACE
+      subnets:
+        - dev: n6
+          addr: 10.45.0.0/16
+          dnn: internet
+
+  
