@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: telco-data-plane-config
+  name: telco-data-plane-config  # Flux is getting this
   namespace: default
   labels:
     app: upf-core

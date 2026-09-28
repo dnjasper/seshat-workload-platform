@@ -17,7 +17,7 @@ spec:
         app: upf-core
       annotations:
         k8s.v1.cni.cncf.io/networks: '[
-          { "name": "telco-N3-plane", "interface": "n3" },
+          { "name": "telco-N3-plane", "interface": "n3" },  # I hope this works
           { "name": "telco-N6-plane", "interface": "n6" }
         ]'
     spec:

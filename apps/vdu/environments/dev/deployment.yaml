@@ -15,7 +15,7 @@ spec:
       labels:
         app: seshat-vdu
       annotations:
-        k8s.v1.cni.cncf.io/networks: telco-data-plane
+        k8s.v1.cni.cncf.io/networks: telco-n3-plane
     spec:
       serviceAccountName: seshat-vdu-sa
       containers:
