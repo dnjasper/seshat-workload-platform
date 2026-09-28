@@ -21,7 +21,7 @@ spec:
       containers:
         - name: seshat-vdu
           #  Total Bullshit!
-          image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/seshat_api:latest@sha256:34152f32a1b761aa53231197a56bd0dee42836ebc86a6ec939f83183eed7c890 # {"$imagepolicy": "flux-system:seshat-api-latest"}  
+          image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/seshat_api:latest@sha256:50f8c1af9a62a1debf75ff0cc679f997096da95a15fd793c5841b14450d1b373 # {"$imagepolicy": "flux-system:seshat-api-latest"}  
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
