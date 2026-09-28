@@ -21,7 +21,7 @@ spec:
           { "name": "telco-N6-plane", "interface": "n6" }
         ]'
     spec:
-      securityContext:
+      #securityContext:
         # sysctls:
         #   - name: net.ipv4.ip_forward
         #     value: "1"
