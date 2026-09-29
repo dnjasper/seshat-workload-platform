@@ -21,7 +21,8 @@ spec:
           { "name": "telco-n6-plane", "interface": "n6" }
         ]'
     spec:
-      #securityContext:
+      securityContext:
+        privileged: true
         # sysctls:
         #   - name: net.ipv4.ip_forward
         #     value: "1"
@@ -50,10 +51,15 @@ spec:
       volumes:
         - name: upf-config-volume
           configMap:
+            defaultMode: 420
             name: telco-data-plane-config
             items:
               - key: upf.yaml
                 path: upf.yaml
+        - name: deve-net-tun
+          hostPath:
+            path: dev/net/tun
+            type: CharDevice
       containers:
         - name: upf-container
           image: gradiant/open5gs:2.7.2
@@ -70,6 +76,8 @@ spec:
           volumeMounts:
             - name: upf-config-volume
               mountPath: /etc/open5gs/
+            - name: deve-net-tun
+              mountPath: /dev/net/tun
           ports:
             - containerPort: 2123 # N4 Control Plane Port
               name: n4-port
