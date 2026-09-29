@@ -21,8 +21,8 @@ spec:
           { "name": "telco-n6-plane", "interface": "n6" }
         ]'
     spec:
-      securityContext:
-        privileged: true
+      # securityContext:
+      #   privileged: true
         # sysctls:
         #   - name: net.ipv4.ip_forward
         #     value: "1"
@@ -63,6 +63,8 @@ spec:
       containers:
         - name: upf-container
           image: gradiant/open5gs:2.7.2
+          securityContext:
+            privileged: true
           args:
             - /opt/open5gs/bin/open5gs-upfd  
           #image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/upf_worker:latest@sha256 # {"$imagepolicy": "flux-system:seshat-api-latest"}
