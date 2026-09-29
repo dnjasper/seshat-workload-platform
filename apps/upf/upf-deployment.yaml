@@ -63,25 +63,21 @@ spec:
       containers:
         - name: upf-container
           image: gradiant/open5gs:2.7.2
-          # securityContext:
-          #   privileged: true
-          command:
-            - /opt/open5gs/bin/open5gs-upfd
+          securityContext:
+            privileged: true
           args:
-           # - /opt/open5gs/bin/open5gs-upfd
-            - -c
-            - /etc/open5gs/upf.yaml  
+            - /opt/open5gs/bin/open5gs-upfd 
           #image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/upf_worker:latest@sha256 # {"$imagepolicy": "flux-system:seshat-api-latest"}
-          imagePullPolicy: Always
-          securityContext:         
-            allowPrivilegeEscalation: true # Hardened: Prevents exploitation escalation loops
-            privileged: false
-            capabilities:
-              drop:
-                - ALL                   # 1. Strips away all 40 standard root access privileges
-              add:
-                - NET_ADMIN
-                - SYS_ADMIN
+          # imagePullPolicy: Always
+          # securityContext:         
+          #   allowPrivilegeEscalation: true # Hardened: Prevents exploitation escalation loops
+          #   privileged: false
+          #   capabilities:
+          #     drop:
+          #       - ALL                   # 1. Strips away all 40 standard root access privileges
+          #     add:
+          #       - NET_ADMIN
+          #       - SYS_ADMIN
           volumeMounts:
             - name: upf-config-volume
               mountPath: /etc/open5gs/
