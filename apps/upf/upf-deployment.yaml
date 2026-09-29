@@ -56,9 +56,9 @@ spec:
             items:
               - key: upf.yaml
                 path: upf.yaml
-        - name: deve-net-tun
+        - name: dev-net-tun
           hostPath:
-            path: dev/net/tun
+            path: /dev/net/tun
             type: CharDevice
       containers:
         - name: upf-container
@@ -76,7 +76,7 @@ spec:
           volumeMounts:
             - name: upf-config-volume
               mountPath: /etc/open5gs/
-            - name: deve-net-tun
+            - name: dev-net-tun
               mountPath: /dev/net/tun
           ports:
             - containerPort: 2123 # N4 Control Plane Port
