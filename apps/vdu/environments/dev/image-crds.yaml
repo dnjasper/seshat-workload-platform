@@ -24,7 +24,8 @@ spec:
 # IMAGE-REPO ----------------------------------------------------
 
 ---
-IMAGE-POLICY ----------------------------------------------------
+
+#IMAGE-POLICY ----------------------------------------------------
 
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
