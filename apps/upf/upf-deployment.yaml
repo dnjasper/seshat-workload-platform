@@ -69,14 +69,14 @@ spec:
             - /opt/open5gs/bin/open5gs-upfd  
           #image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/upf_worker:latest@sha256 # {"$imagepolicy": "flux-system:seshat-api-latest"}
           imagePullPolicy: Always
-          securityContext:         
-            allowPrivilegeEscalation: false # Hardened: Prevents exploitation escalation loops
-            capabilities:
-              drop:
-                - ALL                   # 1. Strips away all 40 standard root access privileges
-              add:
-                - NET_ADMIN
-                - SYS_ADMIN
+          # securityContext:         
+          #   allowPrivilegeEscalation: false # Hardened: Prevents exploitation escalation loops
+          #   capabilities:
+          #     drop:
+          #       - ALL                   # 1. Strips away all 40 standard root access privileges
+          #     add:
+          #       - NET_ADMIN
+          #       - SYS_ADMIN
           volumeMounts:
             - name: upf-config-volume
               mountPath: /etc/open5gs/
