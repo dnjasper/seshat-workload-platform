@@ -11,6 +11,9 @@ data:
     logger:
       path:
         file: /opt/open5gs/var/log/open5gs/upf.log
+    global:
+      max:
+        ue: 1024
 
     # N4 Interface
     # UPF listens for PFCP session rules from the SMF on UDP 8805
