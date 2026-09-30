@@ -9,25 +9,30 @@ metadata:
 data:
   upf.yaml: |
     logger:
-      level: info
-      file: /var/log/open5gs/upf.log
+      path:
+        file: /opt/open5gs/var/log/open5gs/upf.log
 
     # N4 Interface
     # UPF listens for PFCP session rules from the SMF on UDP 8805
     upf:
       pfcp:
-        - address: 0.0.0.0
+        server:
+        - dev: eth0
 
     # N3 INTERFACE
     # gtp-u traffic - Port 2152
       gtpu:
-        - dev: n3
+        server:
+          - dev: n3
 
 
-    # N6 INTERFACE
-      subnets:
-        - dev: n6
-          addr: 10.45.0.0/16
+    # N6 Forwarding is taken care of by Linux
+      session:
+        - subnet: 10.45.0.0/16
+          gateway: 10.45.0.1
           dnn: internet
 
-  
+      metrics:
+        server:
+          - dev: eth0
+            port: 9090

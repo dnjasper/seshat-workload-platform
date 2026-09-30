@@ -81,7 +81,8 @@ spec:
           #       - SYS_ADMIN
           volumeMounts:
             - name: upf-config-volume
-              mountPath: /etc/open5gs/
+              mountPath: /opt/open5gs/etc/open5gs/upf.yaml
+              subPath: upf.yaml
             - name: dev-net-tun
               mountPath: /dev/net/tun
           ports:
