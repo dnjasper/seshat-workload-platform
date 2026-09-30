@@ -65,6 +65,7 @@ spec:
           image: gradiant/open5gs:2.7.2
           securityContext:
             privileged: true
+            runAsUser: 0
           args:
             - /opt/open5gs/bin/open5gs-upfd 
           #image: 468402787427.dkr.ecr.us-east-1.amazonaws.com/upf_worker:latest@sha256 # {"$imagepolicy": "flux-system:seshat-api-latest"}
