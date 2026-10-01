@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - upf-deployment.yaml
   - configmap.yaml
+  - upf-pfcp-service.yaml
