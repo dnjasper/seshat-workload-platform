@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
   - ocirepository.yaml
   - helmrelease.yaml
+  - daemonsets.yaml
+  - storageclass-pv.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
