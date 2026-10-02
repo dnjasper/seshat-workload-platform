@@ -1,0 +1,13 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: open5gs
+  namespace: default
+spec:
+  interval: 10m
+  url: oci://registry-1.docker.io/gradiant/open5gs
+  ref:
+    tag: "2.2.0"
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy

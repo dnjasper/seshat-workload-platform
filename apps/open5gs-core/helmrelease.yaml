@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: open5gs
+  namespace: default
+spec:
+  interval: 5m
+
+  chartRef:
+    kind: OCIRepository
+    name: open5gs
+    namespace: default
+
+  releaseName: open5gs
+  targetNamespace: default
+
+  valuesFrom:
+    - kind: ConfigMap
+      name: open5gs-values
+      valuesKey: values.yaml
+
+  

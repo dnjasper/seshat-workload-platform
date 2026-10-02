@@ -1,0 +1,53 @@
+upf:
+  enabled: false
+
+webui:
+  enabled: false
+
+populate:
+  enabled: false
+
+hss:
+  enabled: false
+
+mme:
+  enabled: false
+
+pcrf:
+  enabled: false
+
+sgwc:
+  enabled: false
+
+sgwu:
+  enabled: false
+
+amf:
+  enabled: true
+
+ausf:
+  enabled: true
+
+bsf:
+  enabled: true
+
+nrf:
+  enabled: true
+
+nssf:
+  enabled: true
+
+pcf:
+  enabled: true
+
+scp:
+  enabled: true
+
+udm:
+  enabled: true
+
+udr:
+  enabled: true
+
+mongodb:
+  enabled: true
