@@ -51,3 +51,12 @@ udr:
 
 mongodb:
   enabled: true
+  persistence:
+    enabled: true
+    storageClass: "local-storage"
+    size: 10Gi
+    volumeName: "open5gs-mongodb-pv"
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/mongodb
+    tag: 5.0.10-debian-11-r3
