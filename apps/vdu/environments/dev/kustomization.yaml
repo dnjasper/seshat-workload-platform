@@ -6,7 +6,7 @@ resources:
   - image-crds.yaml
   - pod-monitor.yaml
   - prometheus-rule.yaml
-  - hpa.yaml
+# - hpa.yaml
   - flux-pod-monitor.yaml
   - service.yaml
   - serviceaccount.yaml
