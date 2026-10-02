@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: node-storage-preparer
-  namespace: kube-system              # Runs at the cluster administration layer
+  namespace: kube-system             
 spec:
   selector:
     matchLabels:
@@ -12,7 +12,6 @@ spec:
       labels:
         name: node-storage-preparer
     spec:
-      # This ensures the helper script runs as root so it can modify the host disk
       hostPID: true
       hostNetwork: true
       initContainers:
@@ -20,7 +19,6 @@ spec:
         image: alpine:latest
         command: ["/bin/sh", "-c"]
         args:
-          # --- THIS IS YOUR SCRIPT THAT AUTOMATES THE DIR CREATION ---
           - |
             echo "Checking and preparing host storage paths..."
             mkdir -p /host/mnt/data/mongodb
@@ -28,10 +26,10 @@ spec:
             echo "Host directory prepared successfully."
         volumeMounts:
         - name: host-root
-          mountPath: /host            # Injects the real EC2 hard drive into the script
+          mountPath: /host            
       containers:
       - name: pause-container
-        image: registry.k8s.io/pause:3.9 # A standard placeholder container that just sleeps
+        image: registry.k8s.io/pause:3.9 
       volumes:
       - name: host-root
         hostPath:
