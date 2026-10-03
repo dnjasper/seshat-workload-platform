@@ -49,6 +49,11 @@ udm:
 udr:
   enabled: true
 
+smf:
+  enabled: true
+  config:
+    freeDiameter: ""
+
 mongodb:
   enabled: true
   persistence:
