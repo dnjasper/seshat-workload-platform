@@ -52,7 +52,7 @@ udr:
 smf:
   enabled: true
   config:
-    freeDiameter: true
+    freeDiameter: false
 
 mongodb:
   enabled: true
