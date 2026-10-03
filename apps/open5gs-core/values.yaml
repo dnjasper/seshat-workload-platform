@@ -14,7 +14,7 @@ mme:
   enabled: false
 
 pcrf:
-  enabled: false
+  enabled: true
 
 sgwc:
   enabled: false
