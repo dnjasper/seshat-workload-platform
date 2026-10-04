@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ueransim-gnb
+  namespace: default
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: ueransim-gnb
+
+  template:
+    metadata:
+      labels:
+        app: ueransim-gnb
+
+      annotations:
+        k8s.v1.cni.cncf.io/networks: >-
+          [{
+            "name": "telco-n3-plane",
+            "interface": "n3"
+          }]
+
+    spec:
+      containers:
+        - name: gnb
+          image: gradiant/ueransim:3.2.6
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - /bin/sh
+            - -c
+
+          args:
+            - |
+              set -e
+
+              echo "=== gNB interfaces ==="
+              ip -br addr
+
+              POD_IP=$(ip -4 -o addr show dev eth0 | awk '{print $4}' | cut -d/ -f1)
+              N3_IP=$(ip -4 -o addr show dev n3 | awk '{print $4}' | cut -d/ -f1)
+              AMF_IP=$(getent hosts open5gs-amf-ngap | awk 'NR==1 {print $1}')
+
+              echo "POD_IP=$POD_IP"
+              echo "N3_IP=$N3_IP"
+              echo "AMF_IP=$AMF_IP"
+
+              sed \
+                -e "s/\${POD_IP}/$POD_IP/g" \
+                -e "s/\${N3_IP}/$N3_IP/g" \
+                -e "s/\${AMF_IP}/$AMF_IP/g" \
+                /config/open5gs-gnb.yaml.template \
+                > /tmp/open5gs-gnb.yaml
+
+              echo "=== Generated UERANSIM configuration ==="
+              cat /tmp/open5gs-gnb.yaml
+
+              echo "=== Starting gNB ==="
+              exec nr-gnb -c /tmp/open5gs-gnb.yaml
+
+          volumeMounts:
+            - name: gnb-config
+              mountPath: /config
+              readOnly: true
+
+      volumes:
+        - name: gnb-config
+          configMap:
+            name: ueransim-gnb-config

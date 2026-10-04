@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ueransim-gnb-config
+  namespace: default
+data:
+  open5gs-gnb.yaml.template: |
+    mcc: '999'
+    mnc: '70'
+
+    nci: '0x000000010'
+    idLength: 32
+    tac: 1
+
+    linkIp: ${POD_IP}
+    ngapIp: ${POD_IP}
+    gtpIp: ${N3_IP}
+
+    amfConfigs:
+      - address: ${AMF_IP}
+        port: 38412
+
+    slices:
+      - sst: 1
+
+    ignoreStreamIds: true
