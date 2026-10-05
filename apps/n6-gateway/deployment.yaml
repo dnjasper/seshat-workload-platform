@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: n6-gateway
+  namespace: default
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: n6-gateway
+
+  template:
+    metadata:
+      labels:
+        app: n6-gateway
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |-
+          [{
+            "name": "telco-n6-plane",
+            "interface": "n6",
+            "ips": ["192.168.200.1/24"]
+          }]
+
+    spec:
+      containers:
+        - name: gateway
+          image: alpine:3.20
+
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+
+          command:
+            - /bin/sh
+            - -c
+
+          args:
+            - |
+              sysctl -w net.ipv4.ip_forward=1
+              sleep infinity
