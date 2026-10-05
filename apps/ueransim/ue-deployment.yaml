@@ -55,8 +55,14 @@ spec:
             - name: ue-config
               mountPath: /config
               readOnly: true
+            - name: tun-device
+              mountPath: /dev/net/tun
 
       volumes:
         - name: ue-config
           configMap:
             name: ueransim-ue-config
+        - name: tun-device
+          hostPath:
+            path: /dev/net/tun
+            type: CharDevice
