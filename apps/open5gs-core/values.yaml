@@ -47,6 +47,11 @@ nrf:
 
 nssf:
   enabled: true
+  config:
+    nsiList:
+      - uri: http://open5gs-nrf-sbi:7777
+        sst: 1
+        sd: "111111"
 
 pcf:
   enabled: true
