@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - gnb-configmap.yaml
   - gnb-deployment.yaml
+  - gnb-service.yaml
