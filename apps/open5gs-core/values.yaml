@@ -26,6 +26,15 @@ sgwu:
 
 amf:
   enabled: true
+  config:
+    plmnList:
+      - plmn_id:
+          mcc: "999"
+          mnc: "70"
+        s_nssai:
+          - sst: 1
+            sd: "111111"
+      
 
 ausf:
   enabled: true
