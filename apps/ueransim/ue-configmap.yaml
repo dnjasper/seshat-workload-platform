@@ -43,15 +43,15 @@ data:
         apn: 'internet'
         slice:
           sst: 1
-          sd: '111111'
+          sd: 1118481
 
     configured-nssai:
       - sst: 1
-        sd: '111111'
+        sd: 1118481
 
     default-nssai:
       - sst: 1
-        sd: '111111'
+        sd: 1118481
 
     integrity:
       IA1: true
