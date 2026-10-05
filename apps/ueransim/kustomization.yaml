@@ -5,3 +5,5 @@ resources:
   - gnb-configmap.yaml
   - gnb-deployment.yaml
   - gnb-service.yaml
+  - ue-configmap.yaml
+  - ue-deployment.yaml

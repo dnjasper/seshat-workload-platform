@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ueransim-ue
+  namespace: default
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: ueransim-ue
+
+  template:
+    metadata:
+      labels:
+        app: ueransim-ue
+
+    spec:
+      containers:
+        - name: ue
+          image: gradiant/ueransim:3.2.6
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+
+          command:
+            - /bin/sh
+            - -c
+
+          args:
+            - |
+              set -e
+
+              echo "=== Resolving gNB ==="
+              GNB_IP=$(getent hosts ueransim-gnb | awk 'NR==1 {print $1}')
+
+              echo "GNB_IP=$GNB_IP"
+
+              sed \
+                -e "s/\${GNB_IP}/$GNB_IP/g" \
+                /config/open5gs-ue.yaml.template \
+                > /tmp/open5gs-ue.yaml
+
+              echo "=== Generated UE configuration ==="
+              cat /tmp/open5gs-ue.yaml
+
+              echo "=== Starting UE ==="
+              exec nr-ue -c /tmp/open5gs-ue.yaml
+
+          volumeMounts:
+            - name: ue-config
+              mountPath: /config
+              readOnly: true
+
+      volumes:
+        - name: ue-config
+          configMap:
+            name: ueransim-ue-config
