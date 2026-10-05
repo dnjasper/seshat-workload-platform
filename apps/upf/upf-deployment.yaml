@@ -39,8 +39,8 @@ spec:
               # 1. Create a custom routing table (Table 2) inside the container
               ip rule add from 10.45.0.0/16 lookup 2
               
-              # 2. Add the default internet gateway route matching your 10.0.2.0/24 subnet
-              ip route add default via 10.0.2.1 dev n6 table 2
+              # 2. N6 default route temporarily disabled until the 192.168.200.0/24 gateway is defined
+              # ip route add default via 192.168.200.1 dev n6 table 2
               
               # 3. Enabled: Perforrms Source NAT so AWS returns traffic properly
               iptables -t nat -A POSTROUTING -o n6 -j MASQUERADE
