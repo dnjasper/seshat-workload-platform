@@ -21,6 +21,7 @@ spec:
           { "name": "telco-n6-plane", "interface": "n6", "ips": ["192.168.200.150/24"] }
         ]'
     spec:
+      nodeName: ip-10-0-3-97.ec2.internal
       # securityContext:
       #   privileged: true
         # sysctls:
