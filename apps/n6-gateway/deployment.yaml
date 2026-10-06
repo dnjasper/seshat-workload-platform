@@ -40,5 +40,9 @@ spec:
 
           args:
             - |
+              apk add --no-cache iptables
               sysctl -w net.ipv4.ip_forward=1
+              iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+              iptables -A FORWARD -i n6 -o eth0 -j ACCEPT
+              iptables -A FORWARD -i eth0 -o n6 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
               sleep infinity
