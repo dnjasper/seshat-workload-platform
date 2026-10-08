@@ -27,7 +27,7 @@ spec:
           }]
 
     spec:
-      nodeName: ip-10-0-3-161.ec2.internal
+     # nodeName: ip-10-0-3-161.ec2.internal
       containers:
         - name: gateway
           image: alpine:3.20
