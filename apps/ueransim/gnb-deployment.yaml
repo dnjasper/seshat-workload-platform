@@ -24,7 +24,7 @@ spec:
           }]
 
     spec:
-     # nodeName: ip-10-0-3-161.ec2.internal
+      nodeName: ip-10-0-2-174.ec2.internal
       containers:
         - name: gnb
           image: gradiant/ueransim:3.2.6
