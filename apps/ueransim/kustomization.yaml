@@ -6,4 +6,4 @@ resources:
   - gnb-deployment.yaml
   - gnb-service.yaml
   - ue-configmap.yaml
- # - ue-deployment.yaml
+  - ue-deployment.yaml
