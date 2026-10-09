@@ -42,7 +42,7 @@ spec:
               
               # 2. N6 default route temporarily disabled until the 192.168.200.0/24 gateway is defined
               ETH0_GW=$(ip route show default dev eth0 | awk '{print $3}')
-              ip route replace default via "$ETH0_GW" dev eth0 table 2
+              ip route replace default via "$ETH0_GW" dev n6 table 2
               
               # 3. Enabled: Perforrms Source NAT so AWS returns traffic properly
               iptables -t nat -A POSTROUTING -o n6 -j MASQUERADE
