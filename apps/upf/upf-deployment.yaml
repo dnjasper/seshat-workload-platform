@@ -18,7 +18,7 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: '[
           { "name": "telco-n3-plane", "interface": "n3" },  
-          { "name": "telco-n6-plane", "interface": "n6", "ips": ["192.168.200.150/24"] }
+          { "name": "telco-n6-ptp-test", "interface": "n6" }
         ]'
     spec:
       nodeName: ip-10-0-2-180.ec2.internal
