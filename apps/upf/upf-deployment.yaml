@@ -21,7 +21,7 @@ spec:
           { "name": "telco-n6-ptp-test", "interface": "n6" }
         ]'
     spec:
-      nodeName: ip-10-0-2-180.ec2.internal
+      nodeName: ip-10-0-2-222.ec2.internal
       # securityContext:
       #   privileged: true
         # sysctls:
